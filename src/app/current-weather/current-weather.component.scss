@@ -1,0 +1,29 @@
+.card {
+  text-align: center;
+  padding: 1rem;
+  background-color: #fafafa;
+  .card-title {
+    font-size: 1.3rem;
+  }
+  .card-body {
+    .icon {
+      font-size: 4rem;
+      padding: 2rem;
+    }
+    .temp {
+      font-size: 2rem;
+    }
+    .description {
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    .minmax {
+      display: flex;
+      justify-content: space-between;
+      margin: initial;
+      div {
+        text-align: center;
+      }
+    }
+  }
+}

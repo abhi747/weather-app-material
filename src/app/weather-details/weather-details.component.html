@@ -1,0 +1,17 @@
+<div *ngIf="weatherDetailsFetched">
+	<div class="description">
+		Weather at {{this.currentWeather?.name}}
+	</div>
+	<div class="container">
+		<app-current-weather class="weather-section" [currentWeather]="currentWeather" [today]="true"></app-current-weather>
+
+		<ng-container *ngFor="let currentWeather of forecastDetails;
+		 let i=index;">
+			<app-current-weather class="weather-section" [currentWeather]="currentWeather" [today]="false">
+			</app-current-weather>
+		</ng-container>
+	</div>
+</div>
+<div class="spinner" *ngIf="(_weatherService.loading$ | async)">
+	<mat-spinner></mat-spinner>
+</div>
