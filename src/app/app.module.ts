@@ -31,7 +31,7 @@ import { WeatherHttpInterceptor } from './config/http.interceptor';
 		BrowserAnimationsModule,
 		MaterialModule,
 		HttpClientModule,
-		FormsModule
+		FormsModule,
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: WeatherHttpInterceptor, multi: true }

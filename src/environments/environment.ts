@@ -5,7 +5,8 @@
 export const environment = {
 	production: false,
 	commonUrl: 'https://api.openweathermap.org/data/2.5/',
-	APIKEY: '00e66b28da5ffe7b45d077a2a6e7b278'
+	citiesUrl: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
+	OpenWeatherMapAPIKEY: '00e66b28da5ffe7b45d077a2a6e7b278',
 };
 
 /*

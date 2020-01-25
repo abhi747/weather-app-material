@@ -24,6 +24,7 @@ mat-toolbar {
     text-decoration: none;
     color: black;
     font-weight: normal;
+    font-size: 1.5rem;
   }
 }
 .mat-toolbar-row,
@@ -31,13 +32,13 @@ mat-toolbar {
   height: 85px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 784px) {
   mat-toolbar {
     padding: 0 1rem;
   }
 }
 
-@media screen and (max-width: 458px) {
+@media screen and (max-width: 650px) {
   .mat-toolbar-row,
   .mat-toolbar-single-row {
     padding-top: 0.6rem;
@@ -56,6 +57,17 @@ mat-toolbar {
     .right-menu {
       order: 0;
       text-align: center;
+    }
+  }
+}
+@media screen and (max-width: 612px) {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    .searchbar {
+      margin-top: 2.6rem;
+    }
+    .right-menu {
+      text-align: right;
     }
   }
 }

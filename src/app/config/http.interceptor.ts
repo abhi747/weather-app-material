@@ -9,12 +9,17 @@ export class WeatherHttpInterceptor implements HttpInterceptor {
 		req: HttpRequest<any>,
 		next: HttpHandler
 	): Observable<HttpEvent<any>> {
-		req = req.clone({
+		if (req.url.includes("openweathermap")) {
+			req = this.setOpenWeatherMapAPIParams(req)
+		}
+		return next.handle(req);
+	}
+	setOpenWeatherMapAPIParams(req: HttpRequest<any>) {
+		return req.clone({
 			setParams: {
-				APPID: environment.APIKEY,
+				APPID: environment.OpenWeatherMapAPIKEY,
 				units: 'metric'
 			}
 		});
-		return next.handle(req);
 	}
 }

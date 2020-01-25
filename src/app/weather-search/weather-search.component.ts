@@ -66,7 +66,7 @@ export class WeatherSearchComponent {
 	openSnackBar() {
 		this._snackBar.open('City/ Town not found', 'Okay', {
 			duration: 3000,
-			verticalPosition: 'top'
+			verticalPosition: 'top',
 		});
 	}
 }
