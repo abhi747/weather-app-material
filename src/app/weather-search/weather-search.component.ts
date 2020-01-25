@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from './../shared/weather.service';
 import { forkJoin } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,18 +10,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 	templateUrl: './weather-search.component.html',
 	styleUrls: ['./weather-search.component.scss']
 })
-export class WeatherSearchComponent implements OnInit {
+export class WeatherSearchComponent {
 	currentWeather$;
 	forecast$;
 	@ViewChild('weatherForm', { static: true }) weatherForm;
 	constructor(
 		private _weatherService: WeatherService,
-		private _snackBar: MatSnackBar
+		private _snackBar: MatSnackBar,
+		private _router: Router
 	) {
 		this.getLocationCord();
-	}
-
-	ngOnInit() {
 	}
 
 	getLocationCord() {
@@ -33,7 +32,7 @@ export class WeatherSearchComponent implements OnInit {
 				forkJoin([this.currentWeather$, this.forecast$]).subscribe((data) => {
 					this._weatherService.setLoader(false);
 					this._weatherService.setWeather({ currentWeather: data[0], forecast: data[1] });
-				}, error =>
+				}, _ =>
 					this._weatherService.setLoader(false)
 				)
 			});
@@ -43,17 +42,26 @@ export class WeatherSearchComponent implements OnInit {
 
 	getWeatherDetails(city: string) {
 		this._weatherService.setLoader(true);
-		this.currentWeather$ = this._weatherService.getWeatherByCityName(city);
-		this.forecast$ = this._weatherService.getWeatherForeCastByCityName(city);
-
+		if (this._router.url !== "/home") {
+			this._router.navigate(["/home"]).then((navigated) => {
+				if (navigated) {
+					this._weatherService.setLoader(true);
+					this.currentWeather$ = this._weatherService.getWeatherByCityName(city);
+					this.forecast$ = this._weatherService.getWeatherForeCastByCityName(city);
+				}
+			});
+		} else {
+			this.currentWeather$ = this._weatherService.getWeatherByCityName(city);
+			this.forecast$ = this._weatherService.getWeatherForeCastByCityName(city);
+		}
 		forkJoin([this.currentWeather$, this.forecast$]).subscribe((data) => {
 			this._weatherService.setLoader(false);
 			this._weatherService.setWeather({ currentWeather: data[0], forecast: data[1] });
-		}, error => {
+		}, _ => {
 			this._weatherService.setLoader(false);
 			this.openSnackBar();
-		}
-		)
+		})
+
 	}
 	openSnackBar() {
 		this._snackBar.open('City/ Town not found', 'Okay', {

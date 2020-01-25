@@ -166,6 +166,7 @@ const weatherIcons = {
 	},
 	"711": {
 		"label": "smoke",
+		"isNeutral": true,
 		"icon": "smoke"
 	},
 	"721": {
@@ -202,7 +203,8 @@ const weatherIcons = {
 	},
 	"800": {
 		"label": "clear sky",
-		"icon": "clear"
+		"isNeutral": true,
+		"icon": "night-clear"
 	},
 	"801": {
 		"label": "few clouds",

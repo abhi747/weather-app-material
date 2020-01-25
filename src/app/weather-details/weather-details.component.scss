@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 1em;
   position: relative;
@@ -34,4 +35,26 @@ app-current-weather:not(:first-child) {
 
 app-current-weather:first-child {
   border: 1px solid;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    .weather-section {
+      width: 22%;
+    }
+  }
+  .description {
+    padding-top: 4rem;
+  }
+}
+@media screen and (max-width: 458px) {
+  .container {
+    padding-top: 0;
+    .weather-section {
+      width: 80%;
+    }
+  }
+  .description {
+    padding-top: 5rem;
+  }
 }

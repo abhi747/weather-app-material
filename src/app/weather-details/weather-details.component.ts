@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './../shared/weather.service';
-import { filter } from 'rxjs/operators';
-import { forkJoin } from 'rxjs';
 
 @Component({
 	selector: 'app-weather-details',
@@ -11,7 +9,7 @@ import { forkJoin } from 'rxjs';
 export class WeatherDetailsComponent implements OnInit {
 	currentWeather = {};
 	forecastDetails = [];
-	weatherDetailsFetched = false;
+	isLoader = false;
 	constructor(private _weatherService: WeatherService) { }
 
 	ngOnInit() {
@@ -19,17 +17,20 @@ export class WeatherDetailsComponent implements OnInit {
 			const cachedWeatherDataObj = JSON.parse(localStorage.getItem('cachedWeatherData'));
 			this.currentWeather = cachedWeatherDataObj.currentWeather;
 			this.forecastDetails = cachedWeatherDataObj.forecastDetails;
-			this.weatherDetailsFetched = true;
+			this.isLoader = false;
 		}
 		this._weatherService.weather$.subscribe((weather: any) => {
 			this.currentWeather = weather.currentWeather;
 			this.forecastDetails = this.filterDates(weather.forecast);
-			this.weatherDetailsFetched = true;
+			this.isLoader = false;
 
 			localStorage.setItem('cachedWeatherData', JSON.stringify({
 				currentWeather: this.currentWeather,
 				forecastDetails: this.forecastDetails
 			}))
+		})
+		this._weatherService.loading$.subscribe((isLoader: boolean) => {
+			this.isLoader = isLoader
 		})
 	}
 

@@ -1,4 +1,4 @@
-<div *ngIf="weatherDetailsFetched">
+<div *ngIf="!isLoader">
 	<div class="description">
 		Weather at {{this.currentWeather?.name}}
 	</div>
@@ -12,6 +12,6 @@
 		</ng-container>
 	</div>
 </div>
-<div class="spinner" *ngIf="(_weatherService.loading$ | async)">
+<div class="spinner" *ngIf="isLoader">
 	<mat-spinner></mat-spinner>
 </div>

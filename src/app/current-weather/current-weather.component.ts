@@ -18,14 +18,16 @@ export class CurrentWeatherComponent implements OnChanges {
 	}
 	setIcon() {
 		const weatherIconObj = this.currentWeather.weather[0];
-		this.icon = weatherIcons[weatherIconObj.id].icon;
+		const iconObj = weatherIcons[weatherIconObj.id];
 		let iconPrefix = '';
-		if (weatherIconObj.icon.includes('d')) {
-			iconPrefix = 'day';
-		} else if (weatherIconObj.icon.includes('n')) {
-			iconPrefix = 'night';
+		if (!iconObj.isNeutral) {
+			if (weatherIconObj.icon.includes('d')) {
+				iconPrefix = 'day';
+			} else if (weatherIconObj.icon.includes('n')) {
+				iconPrefix = 'night';
+			}
 		}
-		this.icon = `${iconPrefix}-${this.icon}`;
+		this.icon = iconPrefix ? `${iconPrefix}-${iconObj.icon}` : iconObj.icon;
 	}
 
 }

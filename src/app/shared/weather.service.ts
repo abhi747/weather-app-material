@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { apiUrls } from '../config/config';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,7 +11,7 @@ export class WeatherService {
 	private weatherSource = new Subject();
 	weather$ = this.weatherSource.asObservable();
 
-	private loadingSource = new Subject();
+	private loadingSource = new BehaviorSubject(false);
 	loading$ = this.loadingSource.asObservable();
 
 	constructor(private _http: HttpClient) { }
