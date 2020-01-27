@@ -27,14 +27,12 @@
   background-color: black;
   opacity: 0.5;
 }
-app-current-weather:not(:first-child) {
-  border-top: 1px solid #bcbcbc;
-  border-right: 1px solid #bcbcbc;
-  border-bottom: 1px solid #bcbcbc;
-}
 
-app-current-weather:first-child {
-  border: 1px solid;
+@for $i from 1 through 8 {
+  $bgColor: #0f1f35;
+  app-current-weather:nth-child(#{$i}) {
+    background-color: lighten($bgColor, $i * 8%);
+  }
 }
 
 @media screen and (max-width: 1125px) {
