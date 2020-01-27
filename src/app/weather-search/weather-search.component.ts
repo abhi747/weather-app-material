@@ -4,7 +4,6 @@ import { forkJoin } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-
 @Component({
 	selector: 'app-weather-search',
 	templateUrl: './weather-search.component.html',
@@ -24,6 +23,7 @@ export class WeatherSearchComponent {
 
 	getLocationCord() {
 		if (navigator) {
+			this._weatherService.setLoader(true);
 			navigator.geolocation.getCurrentPosition((pos: any) => {
 				const lat = pos.coords.latitude;
 				const long = pos.coords.longitude;
@@ -35,25 +35,29 @@ export class WeatherSearchComponent {
 				}, _ =>
 					this._weatherService.setLoader(false)
 				)
-			});
+			}, _ => this._weatherService.setLoader(false));
 
 		}
 	}
 
-	getWeatherDetails(city: string) {
-		this._weatherService.setLoader(true);
+	searchWeather(city: string) {
 		if (this._router.url !== "/home") {
 			this._router.navigate(["/home"]).then((navigated) => {
 				if (navigated) {
 					this._weatherService.setLoader(true);
 					this.currentWeather$ = this._weatherService.getWeatherByCityName(city);
 					this.forecast$ = this._weatherService.getWeatherForeCastByCityName(city);
+					this.getWeatherDetails();
 				}
 			});
 		} else {
+			this._weatherService.setLoader(true);
 			this.currentWeather$ = this._weatherService.getWeatherByCityName(city);
 			this.forecast$ = this._weatherService.getWeatherForeCastByCityName(city);
+			this.getWeatherDetails();
 		}
+	}
+	getWeatherDetails() {
 		forkJoin([this.currentWeather$, this.forecast$]).subscribe((data) => {
 			this._weatherService.setLoader(false);
 			this._weatherService.setWeather({ currentWeather: data[0], forecast: data[1] });
@@ -61,7 +65,6 @@ export class WeatherSearchComponent {
 			this._weatherService.setLoader(false);
 			this.openSnackBar();
 		})
-
 	}
 	openSnackBar() {
 		this._snackBar.open('City/ Town not found', 'Okay', {

@@ -1,16 +1,19 @@
-<div *ngIf="!isLoader">
+<div *ngIf="currentWeather?.name">
 	<div class="description">
-		Weather at {{this.currentWeather?.name}}
+		Weather at {{currentWeather?.name}}
 	</div>
 	<div class="container">
 		<app-current-weather class="weather-section" [currentWeather]="currentWeather" [today]="true"></app-current-weather>
 
-		<ng-container *ngFor="let currentWeather of forecastDetails;
+		<ng-container *ngFor="let weather of forecastDetails;
 		 let i=index;">
-			<app-current-weather class="weather-section" [currentWeather]="currentWeather" [today]="false">
+			<app-current-weather class="weather-section" [currentWeather]="weather" [today]="false">
 			</app-current-weather>
 		</ng-container>
 	</div>
+</div>
+<div *ngIf="!currentWeather?.name && !isLoader" class="description">
+	Get current weather and forecast details based on location
 </div>
 <div class="spinner" *ngIf="isLoader">
 	<mat-spinner></mat-spinner>

@@ -171,7 +171,8 @@ const weatherIcons = {
 	},
 	"721": {
 		"label": "haze",
-		"icon": "haze"
+		"isNeutral": true,
+		"icon": "day-haze"
 	},
 	"731": {
 		"label": "sand, dust whirls",

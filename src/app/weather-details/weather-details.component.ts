@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from './../shared/weather.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-weather-details',
 	templateUrl: './weather-details.component.html',
 	styleUrls: ['./weather-details.component.scss']
 })
-export class WeatherDetailsComponent implements OnInit {
+export class WeatherDetailsComponent implements OnInit, OnDestroy {
 	currentWeather = {};
 	forecastDetails = [];
 	isLoader = false;
+	weatherSubscription: Subscription;
+	loaderSubscription: Subscription;
 	constructor(private _weatherService: WeatherService) { }
 
 	ngOnInit() {
@@ -19,7 +22,7 @@ export class WeatherDetailsComponent implements OnInit {
 			this.forecastDetails = cachedWeatherDataObj.forecastDetails;
 			this.isLoader = false;
 		}
-		this._weatherService.weather$.subscribe((weather: any) => {
+		this.weatherSubscription = this._weatherService.weather$.subscribe((weather: any) => {
 			this.currentWeather = weather.currentWeather;
 			this.forecastDetails = this.filterDates(weather.forecast);
 			this.isLoader = false;
@@ -29,8 +32,8 @@ export class WeatherDetailsComponent implements OnInit {
 				forecastDetails: this.forecastDetails
 			}))
 		})
-		this._weatherService.loading$.subscribe((isLoader: boolean) => {
-			this.isLoader = isLoader
+		this.loaderSubscription = this._weatherService.loading$.subscribe((isLoader: boolean) => {
+			this.isLoader = isLoader;
 		})
 	}
 
@@ -47,5 +50,9 @@ export class WeatherDetailsComponent implements OnInit {
 				})
 			})
 		return filteredList;
+	}
+	ngOnDestroy() {
+		this.weatherSubscription.unsubscribe();
+		this.loaderSubscription.unsubscribe();
 	}
 }
