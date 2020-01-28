@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { WeatherService } from './../shared/weather.service';
+import { WeatherService } from './../shared/services/weather.service';
 import { Subscription } from 'rxjs';
 
 @Component({

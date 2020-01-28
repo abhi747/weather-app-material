@@ -1,10 +1,11 @@
 mat-toolbar {
   padding: 0 6rem;
   flex-wrap: wrap;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
+  box-shadow: 0 8px 20px 0 rgba(218, 224, 235, 0.6);
 }
 .brand {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   flex: 0;
   padding: 0.5rem 1rem;
   border: 2px solid;
@@ -25,7 +26,7 @@ mat-toolbar {
     text-decoration: none;
     color: black;
     font-weight: normal;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }
 .mat-toolbar-row,
@@ -43,7 +44,7 @@ mat-toolbar {
   .mat-toolbar-row,
   .mat-toolbar-single-row {
     padding-top: 0.6rem;
-    height: 75px;
+    height: 55px;
     justify-content: center;
     .brand {
       padding-right: 0;

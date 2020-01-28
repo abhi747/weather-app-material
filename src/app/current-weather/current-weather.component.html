@@ -1,12 +1,12 @@
 <div class="card">
 	<div class="card-title">
-		{{today? 'Today': currentWeather?.dt * 1000 | date}}
+		{{today? 'Today': currentWeather?.dt * 1000 | dateToDay}}
 	</div>
 	<div class="card-body">
 		<div class="icon">
 			<i [class]="'wi wi-'+icon"></i>
 		</div>
-		<div class="temp">{{currentWeather?.main?.temp}}&#176;</div>
+		<div class="temp">{{currentWeather?.main?.temp | number:'1.0-0'}}&#176;</div>
 		<div class="description">{{currentWeather?.weather[0].description | uppercase}}</div>
 		<div class="minmax">
 			<div>

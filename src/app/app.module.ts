@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { WeatherHttpInterceptor } from './config/http.interceptor';
+import { DateToDayPipe } from './shared/pipes/date-to-day.pipe';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { WeatherHttpInterceptor } from './config/http.interceptor';
 		CurrentWeatherComponent,
 		WeatherDetailsComponent,
 		FooterComponent,
-		AboutComponent
+		AboutComponent,
+		DateToDayPipe
 	],
 	imports: [
 		BrowserModule,

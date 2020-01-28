@@ -2,7 +2,7 @@ const apiUrls = {
 	currentWeather: 'weather',
 	forecast: 'forecast'
 };
-
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const weatherIcons = {
 	"200": {
 		"label": "thunderstorm with light rain",
@@ -300,4 +300,4 @@ const weatherIcons = {
 		"icon": "cloudy-gusts"
 	}
 }
-export { apiUrls, weatherIcons };
+export { apiUrls, weekDays, weatherIcons };
