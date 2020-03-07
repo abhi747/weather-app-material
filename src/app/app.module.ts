@@ -5,9 +5,9 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WeatherSearchComponent } from './weather-search/weather-search.component';
+import { WeatherSearchComponent } from './weather-details/weather-search/weather-search.component';
 import { HeaderComponent } from './header/header.component';
-import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { WeatherCardComponent } from './weather-details/weather-card/weather-card.component';
 import { WeatherDetailsComponent } from './weather-details/weather-details.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ import { DateToDayPipe } from './shared/pipes/date-to-day.pipe';
 		AppComponent,
 		WeatherSearchComponent,
 		HeaderComponent,
-		CurrentWeatherComponent,
+		WeatherCardComponent,
 		WeatherDetailsComponent,
 		FooterComponent,
 		AboutComponent,

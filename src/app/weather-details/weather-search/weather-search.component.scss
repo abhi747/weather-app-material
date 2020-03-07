@@ -1,0 +1,19 @@
+mat-toolbar {
+  padding-top: 0.8rem;
+  form {
+    width: 35%;
+    margin: 0 auto;
+  }
+  mat-form-field {
+    width: 90%;
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (max-width: 458px) {
+  mat-toolbar {
+    form {
+      width: 90%;
+    }
+  }
+}

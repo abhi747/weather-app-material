@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from './../shared/services/weather.service';
 import { Subscription } from 'rxjs';
+import { WeatherDetails } from './models/weather-details';
 
 @Component({
 	selector: 'app-weather-details',
@@ -8,7 +9,7 @@ import { Subscription } from 'rxjs';
 	styleUrls: ['./weather-details.component.scss']
 })
 export class WeatherDetailsComponent implements OnInit, OnDestroy {
-	currentWeather = {};
+	currentWeather: WeatherDetails;
 	forecastDetails = [];
 	isLoader = false;
 	weatherSubscription: Subscription;

@@ -1,12 +1,12 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { weatherIcons } from '../config/config'
+import { weatherIcons } from '../../config/config'
 
 @Component({
-	selector: 'app-current-weather',
-	templateUrl: './current-weather.component.html',
-	styleUrls: ['./current-weather.component.scss']
+	selector: 'app-weather-card',
+	templateUrl: './weather-card.component.html',
+	styleUrls: ['./weather-card.component.scss']
 })
-export class CurrentWeatherComponent implements OnChanges {
+export class WeatherCardComponent implements OnChanges {
 	@Input() currentWeather;
 	@Input() today;
 	icon;

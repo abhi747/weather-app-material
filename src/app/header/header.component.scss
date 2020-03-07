@@ -1,75 +1,29 @@
 mat-toolbar {
   padding: 0 6rem;
   flex-wrap: wrap;
-  background-color: #fafafa;
+  background-color: #1a1a1a;
   box-shadow: 0 8px 20px 0 rgba(218, 224, 235, 0.6);
-}
-.brand {
-  font-size: 1.4rem;
-  flex: 0;
-  padding: 0.5rem 1rem;
-  border: 2px solid;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-}
-.searchbar {
-  flex: 0.3;
-  margin-left: 1.5rem;
-}
-.right-menu {
-  flex: auto;
-  text-align: right;
-  a {
-    padding: 1rem;
-    text-decoration: none;
-    color: black;
-    font-weight: normal;
-    font-size: 1.3rem;
-  }
 }
 .mat-toolbar-row,
 .mat-toolbar-single-row {
-  height: 85px;
+  height: 60px;
+}
+.brand {
+  padding: 0.5rem 1rem;
+  a {
+    text-decoration: none;
+    color: whitesmoke;
+  }
+}
+.searchbar {
+  margin-left: 1.5rem;
+  color: whitesmoke;
 }
 
-@media screen and (max-width: 784px) {
-  mat-toolbar {
-    padding: 0 1rem;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .mat-toolbar-row,
-  .mat-toolbar-single-row {
-    padding-top: 0.6rem;
-    height: 55px;
-    justify-content: center;
-    .brand {
-      padding-right: 0;
-      flex: 0;
-      padding: 0;
-      border: none;
-    }
-    .searchbar {
-      order: 1;
-      margin-top: 2.6rem;
-    }
-    .right-menu {
-      order: 0;
-      text-align: center;
-    }
-  }
-}
-@media screen and (max-width: 612px) {
-  .mat-toolbar-row,
-  .mat-toolbar-single-row {
-    .searchbar {
-      margin-top: 2.6rem;
-    }
-    .right-menu {
-      text-align: right;
-    }
-  }
+a {
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+  font-size: 1.3rem;
 }

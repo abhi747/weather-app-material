@@ -1,14 +1,15 @@
+<app-weather-search></app-weather-search>
 <div *ngIf="currentWeather?.name">
 	<div class="description">
 		Weather at {{currentWeather?.name}}
 	</div>
 	<div class="container">
-		<app-current-weather class="weather-section" [currentWeather]="currentWeather" [today]="true"></app-current-weather>
+		<app-weather-card class="weather-section" [currentWeather]="currentWeather" [today]="true"></app-weather-card>
 
 		<ng-container *ngFor="let weather of forecastDetails;
 		 let i=index;">
-			<app-current-weather class="weather-section" [currentWeather]="weather" [today]="false">
-			</app-current-weather>
+			<app-weather-card class="weather-section" [currentWeather]="weather" [today]="false">
+			</app-weather-card>
 		</ng-container>
 	</div>
 </div>

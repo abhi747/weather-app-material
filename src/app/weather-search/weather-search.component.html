@@ -1,8 +1,0 @@
-<form class="weather-form" #weatherForm="ngForm" (ngSubmit)="searchWeather(weatherForm.value.city)">
-	<mat-form-field>
-		<input matInput placeholder="City/ Town" name="city" ngModel autocomplete="off" #city>
-	</mat-form-field>
-	<button mat-icon-button type="submit" [disabled]="!city.value">
-		<mat-icon aria-hidden="false">search</mat-icon>
-	</button>
-</form>

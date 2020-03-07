@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
 html,
 body {
   height: 100%;
@@ -6,8 +8,10 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: linear-gradient(to bottom, #f4f4f4, #fff);
+}
+:not(i):not(mat-icon) {
+  font-family: "Lato", sans-serif !important;
 }
 @media screen and (max-width: 458px) {
   html,

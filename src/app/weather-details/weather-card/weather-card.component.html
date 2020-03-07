@@ -10,12 +10,16 @@
 		<div class="description">{{currentWeather?.weather[0].description | uppercase}}</div>
 		<div class="minmax">
 			<div>
-				<div>{{currentWeather?.main?.temp_min}}&#176;</div>
-				<div>Min</div>
+				<div>
+					<mat-icon>keyboard_arrow_down</mat-icon>
+				</div>
+				<div>{{currentWeather?.main?.temp_min | number:'1.0-0'}}&#176;</div>
 			</div>
 			<div>
-				<div>{{currentWeather?.main?.temp_max}}&#176;</div>
-				<div>Max</div>
+				<div>
+					<mat-icon>keyboard_arrow_up</mat-icon>
+				</div>
+				<div>{{currentWeather?.main?.temp_max | number:'1.0-0'}}&#176;</div>
 			</div>
 		</div>
 	</div>
