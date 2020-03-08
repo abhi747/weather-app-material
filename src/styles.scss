@@ -11,7 +11,7 @@ body {
   background-image: linear-gradient(to bottom, #f4f4f4, #fff);
 }
 :not(i):not(mat-icon) {
-  font-family: "Lato", sans-serif !important;
+  font-family: sans-serif !important;
 }
 @media screen and (max-width: 458px) {
   html,
