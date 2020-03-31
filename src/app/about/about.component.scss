@@ -11,9 +11,14 @@
   font-size: 1.2rem;
   text-align: justify;
 }
-@media screen and (max-width: 458px) {
+@media screen and (max-width: 992px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 576px) {
   .container {
     width: 85%;
-    margin: 0 auto;
   }
 }
