@@ -17,7 +17,8 @@ export class WeatherSearchComponent {
 		private _weatherService: WeatherService,
 		private _snackBar: MatSnackBar
 	) {
-		this.getLocationCord();
+		if (!localStorage.getItem('cachedWeatherData'))
+			this.getLocationCord();
 	}
 
 	getLocationCord() {
