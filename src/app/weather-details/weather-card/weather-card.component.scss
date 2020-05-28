@@ -15,8 +15,10 @@
       font-size: 2rem;
     }
     .description {
+      margin-top: 0.5rem;
       margin-bottom: 2rem;
-      font-size: 0.9rem;
+      text-transform: lowercase;
+      letter-spacing: 0.1rem;
     }
     .minmax {
       display: flex;
